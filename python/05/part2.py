@@ -21,25 +21,29 @@ case we could avoid reading the file twice by re-using the
 list of tickets instead of reading from the file.
 """
 
-INPUT_PATH="input.txt"
 HIGHEST_POSSIBLE_ID = 1000
-occupied = [False] * HIGHEST_POSSIBLE_ID
 
-f = open(INPUT_PATH)
-for l in f.readlines():
-  seat_spec = l.rstrip()
-  seat_id = util.seat_spec_to_id(seat_spec)
-  occupied[seat_id] = True
+def solve(input_path):
+  occupied = [False] * HIGHEST_POSSIBLE_ID
 
-result = -1
-highest_consecutive_occupied = -1
-for i in range(HIGHEST_POSSIBLE_ID):
-  if occupied[i]:
-    if highest_consecutive_occupied == -1:
-      highest_consecutive_occupied = i
-  else:
-    if highest_consecutive_occupied != -1:
-      result = i
-      break
+  f = open(input_path)
+  for l in f.readlines():
+    seat_spec = l.rstrip()
+    seat_id = util.seat_spec_to_id(seat_spec)
+    occupied[seat_id] = True
 
-print(result)
+  result = -1
+  highest_consecutive_occupied = -1
+  for i in range(HIGHEST_POSSIBLE_ID):
+    if occupied[i]:
+      if highest_consecutive_occupied == -1:
+        highest_consecutive_occupied = i
+    else:
+      if highest_consecutive_occupied != -1:
+        result = i
+        break
+
+  return(result)
+
+if __name__ == '__main__':
+    print(solve('input.txt'))

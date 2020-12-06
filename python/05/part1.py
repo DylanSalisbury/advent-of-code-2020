@@ -10,15 +10,17 @@ instructions.
 
 import util
 
-INPUT_PATH="input.txt"
+def solve(input_path):
+  f = open(input_path)
 
-f = open(INPUT_PATH)
+  max_id = 0
+  for l in f.readlines():
+    seat_spec = l.rstrip()
+    seat_id = util.seat_spec_to_id(seat_spec)
+    if (seat_id > max_id):
+      max_id = seat_id
 
-max_id = 0
-for l in f.readlines():
-  seat_spec = l.rstrip()
-  seat_id = util.seat_spec_to_id(seat_spec)
-  if (seat_id > max_id):
-    max_id = seat_id
+  return max_id
 
-print(max_id)  # 896
+if __name__ == '__main__':
+    print(solve('input.txt'))
