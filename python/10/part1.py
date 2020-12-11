@@ -3,7 +3,6 @@ import util
 def solve(input_path):
   f = open(input_path)
   sorted_numbers = sorted(int(s) for s in f)
-  l = len(sorted_numbers)
   prev = 0  # The initial adapter is rated 0
   diff_histogram = [0] * 4
   for n in sorted_numbers:
