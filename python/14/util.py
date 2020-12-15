@@ -1,5 +1,7 @@
 """Helper functions."""
 
+import re
+
 # Represent an int as a list of 36 integers that are each either 0 or 1
 def int_to_bits(convert_me):
   result = [0] * 36
@@ -103,3 +105,20 @@ def process_part2(l):
       for a in addresses:
         result[a] = ins[1]
   return result
+
+def parse_file(input_path):
+  f = open(input_path)
+  instructions = list()
+  for l in f:
+    m = re.match(r'mask = ([01X]{36})', l)
+    if (m):
+      instructions.append(('mask', m.group(1)))
+      continue
+
+    m = re.match(r'mem\[(\d+)\] = (\d+)', l)
+    if (m):
+      instructions.append((int(m.group(1)), int(m.group(2))))
+      continue
+
+    raise AssertionError('Unexpected input line: ' + l)
+  return instructions
