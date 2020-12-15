@@ -15,7 +15,7 @@ class UtilTest(unittest.TestCase):
 
   def test_process(self):
     # Test input from the instructions
-    mem = util.process((
+    mem = util.process_part1((
         ('mask', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X'),
         (8, 11),
         (7, 101),
@@ -26,17 +26,17 @@ class UtilTest(unittest.TestCase):
     # Also test the 11->73 case fro the instructions, which is
     # overridden with the second assignment to location 8 in the
     # previous test call
-    mem = util.process((
+    mem = util.process_part1((
         ('mask', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X'),
         (8, 11)))
     self.assertEqual(mem[8], 73)
     
-  def test_apply_mask_part_2(self):
+  def test_apply_mask_part2(self):
     self.assertEqual(
-      set(util.apply_mask_part_2(list('000000000000000000000000000000X1001X'), 42)),
+      set(util.apply_mask_part2(list('000000000000000000000000000000X1001X'), 42)),
       set( (26, 27, 58, 59) ))
     self.assertEqual(
-      set(util.apply_mask_part_2(list('00000000000000000000000000000000X0XX'), 26)),
+      set(util.apply_mask_part2(list('00000000000000000000000000000000X0XX'), 26)),
       set( (16, 17, 18, 19, 24, 25, 26, 27) ))
 
 

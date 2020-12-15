@@ -18,7 +18,7 @@ def solve(input_path):
     raise AssertionError('Unexpected input line: ' + l)
 
   # print(instructions)
-  mem = util.process(instructions)
+  mem = util.process_part1(instructions)
   # print(mem)
   result = sum(i[1] for i in mem.items())
   # print(result)
