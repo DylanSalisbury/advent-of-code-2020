@@ -53,5 +53,3 @@ def eval(s):
 
 def eval_part2(s):
   return eval_helper(s, eval_no_parens_part2)
-
-  #   FLFTIF
