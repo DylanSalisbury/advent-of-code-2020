@@ -5,6 +5,10 @@
 #include <iostream>
 using namespace std;
 
+// Compile with something like:
+//
+// clang main.cc -o main -l stdc++
+
 void print(const list<int> &l) {
   for (auto i: l) {
     cout << i << " ";
@@ -67,7 +71,7 @@ int main(void) {
 
     // print(l);
 
-    cout << "Elements after 1 are:";
+    cout << "Elements after 1 are: ";
     list<int>::iterator print_iter = next(m[1]);
     for (int i = 0; i < 10; ++i) {
       if (print_iter == l.end()) {
