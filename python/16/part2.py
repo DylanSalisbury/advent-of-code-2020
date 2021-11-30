@@ -6,7 +6,7 @@ def solve(input_path, prefix_to_sum):
   all_tickets = [ [int(v) for v in l.rstrip().split(',')] for l in f]
   valid_tickets = [ t for t in all_tickets if not util.ticket_invalid_values(t, field_spec) ]
   field_map = determine_fields(field_spec, valid_tickets, 0)
-  departure_indices = [ k for k, v in field_map.iteritems() if v.startswith(prefix_to_sum) ]
+  departure_indices = [ k for k, v in field_map.items() if v.startswith(prefix_to_sum) ]
   result = 1
   for i in departure_indices:
     result *= your_ticket[i]
@@ -45,7 +45,7 @@ def determine_fields(field_spec, valid_tickets, starting_index):
 
   # Get the possible fields for column 0, then either return or call recursively
   values = [ t[starting_index] for t in valid_tickets ]
-  possible_fields = [ k for (k, v) in field_spec.iteritems() if all_in(v, values, starting_index, k) ]
+  possible_fields = [ k for (k, v) in field_spec.items() if all_in(v, values, starting_index, k) ]
   cache_index = str([k for k in field_spec])
   if cache_index in fail_cache:
     # print('fail_cache hit', cache_index)
@@ -73,4 +73,4 @@ def determine_fields(field_spec, valid_tickets, starting_index):
   return None
 
 if __name__ == '__main__':
-    print(solve('input.txt'))
+    print(solve('input.txt', 'departure'))
